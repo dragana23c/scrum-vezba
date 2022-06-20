@@ -1,37 +1,44 @@
 class Board {
-    get organization(){
-        return cy.get('.vs-c-media__object').eq(1)
+get organization(){
+        return cy.get('.vs-c-media__object').eq(3)
     }
-
-    get boardNew(){
-        return cy.get("vs-c-boards-item__header--add-new").first();
+get okBtn(){
+        return cy.get('.vs-c-btn--primary').eq(1);
+}
+get boards(){
+    return cy.get('.vs-c-site-logo').eq(0)
+}
+get boardNew(){
+        return cy.get('.vs-c-media')
     }
-   get boardName(){
-    return cy.get("nput [type='text']")
+     
+get boardTitle(){
+    return cy.get('input [name="name"]')
    }
 get nextBtn() {
-    return cy.get(".el-button--success").eq(1);
+    return cy.get('button[name="next_btn"]');
+    
 }
 get scrumCheck(){
-    return cy.get("vs-c-radio-check").first();
+    return cy.get(".vs-c-radio-check").first();
 }
-get nextBtnSecond() {
-    return cy.get(".el-button--success").eq(1);
-}
-get nextBtnThird() {
-    return cy.get(".el-button--success").eq(1);
+
+get boardLogoNext() {
+    return cy.get('button[name="next_btn"]');
 }
 get finishBtn(){
     return cy.get(".el-button--success").eq(1);
 }
-newBoard(){
+newBoard(validName){
     this.organization.click();
+    this.okBtn.click()
     this.boardNew.click();
-    this.boardName.type(nameBoard)
+    this.boardTitle.type(validName)
     this.nextBtn.click();
-    this.scrumCheck.check();
-    this.nextBtnSecond.click();
-    this.nextBtnThird.click();
+    this.scrumCheck.click();
+    this.nextBtn.click();
+    this.nextBtn.click();
+    this.boardLogoNext.click();
     this.finishBtn.click();
 }
 
